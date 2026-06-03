@@ -5,25 +5,25 @@ import type { CSSProperties } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { globalContent } from '@/editable/content/global.content'
+import { slot4BrandConfig } from '@/editable/theme/brand.config'
 import { useEditableLocalAuthSession } from '@/editable/components/EditableLocalAuthForms'
 
 export function EditableFooter() {
-  const footerVars = { '--editable-footer-bg': 'var(--editable-page-bg, #fffaf3)', '--editable-footer-text': 'var(--editable-page-text, #241915)' } as CSSProperties
+  const footerVars = { '--editable-footer-bg': '#eee9e1', '--editable-footer-text': '#1a120d', '--editable-border': 'rgba(26,18,13,0.16)', '--editable-container': '1180px' } as CSSProperties
   const taskLinks = SITE_CONFIG.tasks.filter((task) => task.enabled)
   const year = new Date().getFullYear()
   const { session, logout } = useEditableLocalAuthSession()
 
   return (
     <footer style={footerVars} className="border-t border-[var(--editable-border)] bg-[var(--editable-footer-bg)] text-[var(--editable-footer-text)]">
-      <div className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
-        <div>
-          <Link href="/" className="inline-flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-[var(--editable-border)] bg-white">
-              <img src="/favicon.png?v=20260413" alt={SITE_CONFIG.name} className="h-9 w-9 object-contain" />
-            </span>
-            <span className="text-lg font-black tracking-[-0.04em]">{SITE_CONFIG.name}</span>
+      <div className="mx-auto grid max-w-[var(--editable-container)] gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.9fr_0.9fr] lg:px-8">
+        <div className="border-b border-[var(--editable-border)] pb-10 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
+          <Link href="/" className="inline-flex flex-col">
+            <span className="font-serif text-5xl leading-none">{slot4BrandConfig.siteName}</span>
+            <span className="mt-3 text-[11px] font-black uppercase tracking-[0.26em] opacity-55">{globalContent.footer?.tagline || slot4BrandConfig.tagline}</span>
           </Link>
-          <p className="mt-4 max-w-md text-sm leading-7 opacity-70">{globalContent.footer?.description || SITE_CONFIG.description}</p>
+          <p className="mt-6 max-w-md text-base leading-8 opacity-70">{globalContent.footer?.description || SITE_CONFIG.description}</p>
+          {session ? <p className="mt-6 text-xs font-black uppercase tracking-[0.22em] opacity-55">Signed in as {session.name}</p> : null}
         </div>
 
         <div>
@@ -52,7 +52,7 @@ export function EditableFooter() {
         </div>
       </div>
       <div className="border-t border-[var(--editable-border)] px-4 py-5 text-center text-xs font-bold opacity-55">
-        © {year} {SITE_CONFIG.name}. All rights reserved.
+        &copy; {year} {slot4BrandConfig.siteName}. All rights reserved.
       </div>
     </footer>
   )
