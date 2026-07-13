@@ -8,6 +8,7 @@ import { getTaskConfig, SITE_CONFIG, type TaskKey } from '@/lib/site-config'
 import type { SitePost } from '@/lib/site-connector'
 import { EditableSiteShell } from '@/editable/shell/EditableSiteShell'
 import { slot4BrandConfig } from '@/editable/theme/brand.config'
+import Ads from '@/lib/ads/ads'
 
 export const revalidate = 3
 
@@ -117,6 +118,9 @@ export function TaskDetailView({ task, post, related, comments = [] }: { task: T
         {task === 'pdf' ? <PdfDetail post={post} related={related} /> : null}
         {task === 'profile' ? <ProfileDetail post={post} related={related} /> : null}
         {task === 'article' ? <ArticleDetail post={post} related={related} comments={comments} /> : null}
+        <div className="mx-auto max-w-6xl px-4 pb-12 pt-2 sm:px-6 lg:px-8">
+          <Ads slot="article-bottom" showLabel className="mx-auto w-full" />
+        </div>
       </main>
     </EditableSiteShell>
   )
@@ -125,7 +129,7 @@ export function TaskDetailView({ task, post, related, comments = [] }: { task: T
 function BackLink({ task }: { task: TaskKey }) {
   const taskConfig = getTaskConfig(task)
   return (
-    <Link href={taskConfig?.route || '/'} className="inline-flex items-center gap-2 border border-[var(--editable-border)] bg-white/70 px-4 py-2 text-xs font-black uppercase tracking-[0.18em]">
+    <Link href={taskConfig?.route || '/'} className="inline-flex items-center gap-2 border border-[var(--editable-border)] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] transition hover:-translate-y-0.5 hover:bg-[var(--detail-text)] hover:text-[var(--detail-bg)]">
       <ArrowLeft className="h-4 w-4" /> Back to {taskConfig?.label || 'posts'}
     </Link>
   )
@@ -134,13 +138,14 @@ function BackLink({ task }: { task: TaskKey }) {
 function ArticleDetail({ post, related, comments }: { post: SitePost; related: SitePost[]; comments: Array<{ id: string; name: string; comment: string; createdAt: string }> }) {
   const images = getImages(post)
   return (
-    <section className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8 lg:py-16">
-      <article className="min-w-0 bg-[var(--detail-surface)]">
+    <section className="mx-auto grid max-w-[var(--editable-container)] gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10 lg:px-8 lg:py-16">
+      <article className="min-w-0 border border-[var(--editable-border)] bg-[var(--detail-surface)] p-5 sm:p-8 lg:p-10">
         <BackLink task="article" />
-        <p className="mt-10 text-xs font-black uppercase tracking-[0.28em] text-[var(--detail-accent)]">{categoryOf(post, 'Article')}</p>
-        <h1 className="mt-4 max-w-4xl font-serif text-5xl font-normal leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">{post.title}</h1>
+        <p className="mt-9 text-[11px] font-black uppercase tracking-[0.28em] text-[var(--detail-accent)]">{categoryOf(post, 'Article')}</p>
+        <h1 className="mt-4 max-w-4xl font-serif text-4xl font-normal leading-[1.02] tracking-normal sm:text-5xl lg:text-6xl">{post.title}</h1>
+        {summaryText(post) ? <p className="mt-6 max-w-3xl text-lg leading-8 opacity-70">{summaryText(post)}</p> : null}
       
-        {images[0] ? <img src={images[0]} alt="" className="mt-10 max-h-[620px] w-full border border-[var(--editable-border)] object-cover" /> : null}
+        {images[0] ? <img src={images[0]} alt="" className="mt-9 aspect-[16/9] w-full border border-[var(--editable-border)] object-cover" /> : null}
         <BodyContent post={post} />
         <EditableComments slug={post.slug} comments={comments} />
       </article>

@@ -52,26 +52,26 @@ export const pagesContent = {
     },
   },
   about: {
-    badge: 'About the journal',
-    title: 'A quieter home for articles that deserve attention.',
-    description: `${slot4BrandConfig.siteName} is an article-first publication for essays, columns, interviews, and practical editorial notes.`,
+    badge: 'About Hella Bird',
+    title: 'Ideas worth following. Stories worth sharing.',
+    description: 'Hella Bird is an independent editorial home for thoughtful articles, useful perspectives, interviews, and practical notes.',
     paragraphs: [
-      'We believe a good article page should feel composed: the image should support the headline, the typography should invite reading, and every surrounding link should help the reader continue with intent.',
-      'Our archive is shaped for people who arrive with curiosity. Some want a fast answer, some want a deep essay, and some want to publish their own perspective. The interface keeps those paths clear.',
-      'The publication is intentionally calm. It favors thoughtful pacing, visible form text, useful categories, and article cards that make headlines feel important without turning the site into a poster wall.',
+      'We created Hella Bird for curious readers who want more than a noisy feed. Every page gives strong ideas room to breathe, with clear headlines, purposeful imagery, and typography designed for comfortable reading.',
+      'Our archive brings together quick discoveries, deeper essays, and original perspectives from people with something meaningful to say. Topics and related stories make it easy to follow your curiosity wherever it leads.',
+      'Like its name, Hella Bird is lively, observant, and always looking for a fresh point of view. The experience stays calm and uncluttered so the writing—not the interface—remains at the center.',
     ],
     values: [
       {
-        title: 'Reader-first pages',
-        description: 'Every layout is tuned for legibility, article flow, and calm discovery from first headline to related read.',
+        title: 'Curiosity first',
+        description: 'We publish stories that offer a useful insight, a fresh angle, or a compelling reason to keep exploring.',
       },
       {
-        title: 'Editorial clarity',
-        description: 'Topics, summaries, author context, and search are kept visible so readers understand why an article matters.',
+        title: 'Clear storytelling',
+        description: 'Thoughtful structure, readable design, and meaningful context help every idea land with clarity.',
       },
       {
-        title: 'Publishing momentum',
-        description: 'The create flow gives writers a focused place to draft article submissions without touching backend complexity.',
+        title: 'Open perspectives',
+        description: 'Hella Bird makes space for distinctive voices and gives contributors a focused path to share their work.',
       },
     ],
   },
