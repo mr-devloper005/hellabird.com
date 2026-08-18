@@ -18,9 +18,9 @@ export function EditableFooter() {
     <footer style={footerVars} className="border-t border-[var(--editable-border)] bg-[var(--editable-footer-bg)] text-[var(--editable-footer-text)]">
       <div className="mx-auto grid max-w-[var(--editable-container)] gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.9fr_0.9fr] lg:px-8">
         <div className="border-b border-[var(--editable-border)] pb-10 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10">
-          <Link href="/" className="inline-flex flex-col">
+          <Link href="/" className="inline-flex items-center gap-3">
+            <img src="/favicon.png?v=20260413" alt={slot4BrandConfig.siteName} className="h-24 w-24 object-contain" />
             <span className="font-serif text-5xl leading-none">{slot4BrandConfig.siteName}</span>
-            <span className="mt-3 text-[11px] font-black uppercase tracking-[0.26em] opacity-55">{globalContent.footer?.tagline || slot4BrandConfig.tagline}</span>
           </Link>
           <p className="mt-6 max-w-md text-base leading-8 opacity-70">{globalContent.footer?.description || SITE_CONFIG.description}</p>
           {session ? <p className="mt-6 text-xs font-black uppercase tracking-[0.22em] opacity-55">Signed in as {session.name}</p> : null}
