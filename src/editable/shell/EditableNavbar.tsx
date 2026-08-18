@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { LogOut, Menu, PenLine, Search, UserRound, X } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
-import { globalContent } from '@/editable/content/global.content'
 import { slot4BrandConfig } from '@/editable/theme/brand.config'
 import { useEditableLocalAuthSession } from '@/editable/components/EditableLocalAuthForms'
 
@@ -23,11 +22,9 @@ export function EditableNavbar() {
   return (
     <header style={navVars} className="sticky top-0 z-50 border-b border-[var(--editable-border)] bg-[var(--editable-nav-bg)]/96 text-[var(--editable-nav-text)] backdrop-blur-xl">
       <div className="mx-auto flex min-h-[96px] w-full max-w-[var(--editable-container)] items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex shrink-0 items-end gap-3">
+        <Link href="/" className="group flex shrink-0 items-center gap-3">
+          <img src="/favicon.png?v=20260413" alt={slot4BrandConfig.siteName} className="h-24 w-24 object-contain" />
           <span className="font-serif text-4xl leading-none tracking-normal sm:text-5xl">{slot4BrandConfig.siteName}</span>
-          <span className="hidden pb-1 text-[11px] font-black uppercase tracking-[0.24em] opacity-55 sm:inline">
-            {globalContent.nav?.tagline || slot4BrandConfig.tagline}
-          </span>
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
